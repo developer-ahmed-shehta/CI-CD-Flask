@@ -52,9 +52,5 @@ jobs:
               git remote add origin https://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@github.com/developer-ahmed-shehta/CI-CD.git
             fi
             git pull origin main
-            if [ ! -d "venv" ]; then
-              python3 -m venv venv
-            fi
-            source venv/bin/activate
-            pip install -r requirements.txt
+
           EOF
