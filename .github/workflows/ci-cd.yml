@@ -45,7 +45,7 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -t -i private_key.pem $VM_USER@$VM_HOST << 'EOF'
-            cd /home/azureuser/projects
+            cd /home/azureuser/projects/ci-cd
             if [ ! -d ".git" ]; then
               git init
             fi
@@ -54,11 +54,5 @@ jobs:
             fi
             git fetch origin
             git reset --hard origin/main
-            python -m venv venv
-            echo "Virtual environment created"
-            source venv/bin/activate
-            echo "Virtual environment activated"
-            pip install -r requirements.txt
-            echo "Dependencies installed"
-            ls -al
+            ls
           EOF
