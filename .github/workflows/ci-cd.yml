@@ -43,7 +43,15 @@ jobs:
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -t -i private_key.pem $VM_USER@$VM_HOST << 'EOF'
             cd /home/azureuser/projects/
+            if [ ! -d ".git" ]; then
+              git init
+              git remote add origin git@github.com:yourusername/yourrepo.git
+            fi
             git pull origin main
+            if [ ! -d "venv" ]; then
+              python3 -m venv venv
+            fi
             source venv/bin/activate
+            pip install --upgrade pip
             pip install -r requirements.txt
           EOF
