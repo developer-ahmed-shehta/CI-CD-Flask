@@ -26,6 +26,7 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install Flask
+          pip install pytest
 
       - name: Run tests
         run: |
