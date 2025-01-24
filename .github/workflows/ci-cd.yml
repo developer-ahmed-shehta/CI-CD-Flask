@@ -51,7 +51,7 @@ jobs:
             git config --global --add safe.directory /home/azureuser/projects
             if [ ! -d ".git" ]; then
               git init
-              git remote add origin https://developer-ahmed-shehta:$REPO_TOKEN@github.com/developer-ahmed-shehta/CI-CD.git
+              git remote set origin https://$REPO_TOKEN@github.com/developer-ahmed-shehta/CI-CD.git
             fi
             git pull origin main
             if [ ! -d "venv" ]; then
