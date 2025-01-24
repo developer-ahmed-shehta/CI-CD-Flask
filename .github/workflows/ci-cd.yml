@@ -45,10 +45,7 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -t -i private_key.pem $VM_USER@$VM_HOST << 'EOF'
-            sudo apt-get update
-            sudo apt-get install -y python3-venv python3-pip
-            cd /home/azureuser/projects/
-            git config --global --add safe.directory /home/azureuser/projects
+            cd /home/azureuser/projects/CI-CD
             if [ ! -d ".git" ]; then
               git init
               git remote set origin https://$REPO_TOKEN@github.com/developer-ahmed-shehta/CI-CD.git
