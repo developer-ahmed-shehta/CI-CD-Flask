@@ -8,7 +8,6 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -55,5 +54,8 @@ jobs:
             fi
             git fetch origin
             git reset --hard origin/main
+            python -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
             ls
           EOF
