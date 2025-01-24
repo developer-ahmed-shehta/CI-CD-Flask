@@ -31,6 +31,8 @@ jobs:
         run: |
           source venv/bin/activate
           # Add your test commands here
+          pytest
+      
 
       - name: Deploy
         run: |
