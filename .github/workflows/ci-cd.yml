@@ -55,7 +55,10 @@ jobs:
             git fetch origin
             git reset --hard origin/main
             python -m venv venv
+            echo "Virtual environment created"
             source venv/bin/activate
+            echo "Virtual environment activated"
             pip install -r requirements.txt
-            ls
+            echo "Dependencies installed"
+            ls -al
           EOF
