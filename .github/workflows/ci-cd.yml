@@ -32,16 +32,21 @@ jobs:
           source venv/bin/activate
           pytest
 
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Deploy to VM
         if: success()
-        uses: appleboy/ssh-action@v0.1.0
-        with:
-          host: ${{ secrets.VM_HOST }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /home/azureuser/projects
+        env:
+          VM_HOST: ${{ secrets.VM_HOST }}
+          VM_USER: ${{ secrets.VM_USER }}
+        run: |
+          ssh -o StrictHostKeyChecking=no $VM_USER@$VM_HOST << 'EOF'
+            cd /path/to/your/app
             git pull origin main
             source venv/bin/activate
             pip install -r requirements.txt
             sudo systemctl restart your-app.service
+          EOF
