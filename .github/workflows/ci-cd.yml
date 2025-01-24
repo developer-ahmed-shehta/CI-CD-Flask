@@ -27,12 +27,12 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-          pip install -r requirements.txt || echo "requirements.txt not found, skipping pip install"
+          pip install -r requirements.txt
 
       - name: Run tests
         run: |
           source venv/bin/activate
-          pytest || echo "Tests failed, continuing deployment"
+          pytest
 
       - name: Deploy to VM
         if: success()
@@ -51,16 +51,12 @@ jobs:
             git config --global --add safe.directory /home/azureuser/projects
             if [ ! -d ".git" ]; then
               git init
-              git remote add origin https://$REPO_TOKEN@github.com/developer-ahmed-shehta/CI-CD.git
+              git remote add origin https://developer-ahmed-shehta:$REPO_TOKEN@github.com/developer-ahmed-shehta/CI-CD.git
             fi
             git pull origin main
             if [ ! -d "venv" ]; then
               python3 -m venv venv
             fi
             source venv/bin/activate
-            if [ -f requirements.txt ]; then
-              pip install -r requirements.txt
-            else
-              echo "requirements.txt not found, skipping pip install"
-            fi
+            pip install -r requirements.txt
           EOF
