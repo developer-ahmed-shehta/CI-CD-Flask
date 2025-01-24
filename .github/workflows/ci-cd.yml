@@ -46,7 +46,7 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -t -i private_key.pem $VM_USER@$VM_HOST << 'EOF'
-            cd /home/$VM_USER/projects
+            cd /home/azureuser/projects
             if [ ! -d ".git" ]; then
               git init
               git remote add origin https://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@github.com/developer-ahmed-shehta/CI-CD.git
