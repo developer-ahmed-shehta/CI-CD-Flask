@@ -11,7 +11,7 @@ def goodbye_world():
     return 'Goodbye, CI/CD World!'
 
 @app.route('/goodnight')
-def goodbye_world():
+def goodnight():
     return 'goodnight'
 
 if __name__ == '__main__':
