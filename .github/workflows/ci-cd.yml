@@ -58,5 +58,5 @@ jobs:
             git reset --hard origin/main
             source ../venv/bin/activate
             pip install -r requirements.txt
-            nohup uwsgi --ini uwsgi.ini &
+            sudo systemctl restart flaskapp
           EOF
