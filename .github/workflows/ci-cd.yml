@@ -45,13 +45,13 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem $VM_USER@$VM_HOST << 'EOF'
-            cd /home/azureuser/projects/ci-cd
+            cd /home/$VM_USER/projects/ci-cd
             if [ ! -d ".git" ]; then
               git init
             fi
-            git config --global --add safe.directory /home/azureuser/projects/ci-cd
+            git config --global --add safe.directory /home/$VM_USER/projects/ci-cd
             if ! git remote | grep -q origin; then
-              git remote add origin https://github.com/developer-ahmed-shehta/CI-CD.git
+              git remote add origin https://github.com/$REPO_USER/CI-CD.git
               git remote set-url origin https://${REPO_TOKEN}@github.com/developer-ahmed-shehta/CI-CD.git
             fi
             git fetch origin
