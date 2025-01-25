@@ -10,5 +10,9 @@ def hello_world():
 def goodbye_world():
     return 'Goodbye, CI/CD World!'
 
+@app.route('/goodnight')
+def goodbye_world():
+    return 'goodnight'
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
