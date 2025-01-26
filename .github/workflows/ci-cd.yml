@@ -11,7 +11,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-      
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -45,8 +51,7 @@ jobs:
             fi
             git config --global --add safe.directory /home/$VM_USER/projects/ci-cd
             if ! git remote | grep -q origin; then
-              git remote add origin https://github.com/$REPO_USER/CI-CD.git
-              git remote set-url origin https://${REPO_TOKEN}@github.com/developer-ahmed-shehta/CI-CD.git
+              git remote add origin https://${REPO_TOKEN}@github.com/developer-ahmed-shehta/CI-CD.git
             fi
             git fetch origin
             git reset --hard origin/main
