@@ -18,7 +18,6 @@ jobs:
         with:
           token: ${{ secrets.REPO_TOKEN }}
 
-
       - name: Set up Python  # install python to run pytest before deploy
         uses: actions/setup-python@v2
         with:
