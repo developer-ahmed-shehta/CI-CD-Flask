@@ -11,7 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code  #  give credentials to actions GitHub to access repo
         uses: actions/checkout@v2
@@ -45,7 +44,7 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem 
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem $VM_USER@$VM_HOST << 'EOF' 
-            cd ~/projects/ci-cd
+            cd /home/$VM_USER/projects/ci-cd
             if [ ! -d ".git" ]; then
               git init
             fi
