@@ -16,8 +16,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.REPO_TOKEN }}
-
+          # token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.ACTIONS_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
