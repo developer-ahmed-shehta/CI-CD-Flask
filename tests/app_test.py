@@ -40,4 +40,4 @@ def test_goodbye_world(client):
     assert rv.status_code == 200
 
     # Verify that the response data contains the expected text
-    assert b'Goodbye, CI/CD World!' in rv.data
+    assert b'Hi, Ali' in rv.data
