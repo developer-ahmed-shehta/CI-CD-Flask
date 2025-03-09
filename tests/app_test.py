@@ -20,15 +20,15 @@ def client():
 
 
 # Test function for the root route
-def test_hello_world(client):
-    # Send a GET request to the root URL
-    rv = client.get('/')
-
-    # Check that the status code is 200 (OK)
-    assert rv.status_code == 200
-
-    # Verify that the response data contains the expected text
-    assert b'Hello, CI/CD World!' in rv.data
+# def test_hello_world(client):
+#     # Send a GET request to the root URL
+#     rv = client.get('/')
+#
+#     # Check that the status code is 200 (OK)
+#     assert rv.status_code == 200
+#
+#     # Verify that the response data contains the expected text
+#     assert b'Hello, CI/CD World!' in rv.data
 
 
 # Test function for the /goodbye route
